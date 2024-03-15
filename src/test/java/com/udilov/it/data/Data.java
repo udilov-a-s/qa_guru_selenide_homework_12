@@ -1,7 +1,7 @@
 package com.udilov.it.data;
 
-public class data {
+public class Data {
 
     public static final String repositoryName = "eroshenkoam/allure-example";
-    public static final int issueNumber = 87;
+    public static final int ISSUE_NUMBER = 87;
 }

@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.udilov.it.data.data.issueNumber;
-import static com.udilov.it.data.data.repositoryName;
+import static com.udilov.it.data.Data.ISSUE_NUMBER;
+import static com.udilov.it.data.Data.repositoryName;
 import static org.openqa.selenium.By.linkText;
 
 public class AllureReportsSelenideTest extends TestBase {
@@ -22,7 +22,7 @@ public class AllureReportsSelenideTest extends TestBase {
     @Story("Проверка Issue")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "Github", url = "https://github.com")
-    @DisplayName("Проверка названия Issue c номером " + issueNumber)
+    @DisplayName("Проверка названия Issue c номером " + ISSUE_NUMBER)
     public void allureReportsSelenide() {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -32,6 +32,6 @@ public class AllureReportsSelenideTest extends TestBase {
         $("#query-builder-test").setValue(repositoryName).pressEnter();
         $(linkText(repositoryName)).click();
         $("#issues-tab").click();
-        $(withText("#" + issueNumber)).should(Condition.exist);
+        $(withText("#" + ISSUE_NUMBER)).should(Condition.exist);
     }
 }

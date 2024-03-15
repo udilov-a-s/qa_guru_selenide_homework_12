@@ -6,11 +6,8 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.udilov.it.data.data.issueNumber;
-import static com.udilov.it.data.data.repositoryName;
-import static io.qameta.allure.Allure.step;
+import static com.udilov.it.data.Data.ISSUE_NUMBER;
+import static com.udilov.it.data.Data.repositoryName;
 
 public class AllureReportsWithStepsTest extends TestBase {
 
@@ -20,7 +17,7 @@ public class AllureReportsWithStepsTest extends TestBase {
     @Story("Проверка Issue")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "Github", url = "https://github.com")
-    @DisplayName("Проверка названия Issue c номером " + issueNumber)
+    @DisplayName("Проверка названия Issue c номером " + ISSUE_NUMBER)
     public void allureReportsWithSteps() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         WebSteps steps = new WebSteps();
@@ -29,6 +26,6 @@ public class AllureReportsWithStepsTest extends TestBase {
         steps.searchForRepository(repositoryName);
         steps.clickOnRepositoryLink(repositoryName);
         steps.openIssuesTub();
-        steps.shouldSeeIssueWithNumber(issueNumber);
+        steps.shouldSeeIssueWithNumber(ISSUE_NUMBER);
     }
 }

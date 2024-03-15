@@ -11,8 +11,8 @@ import io.qameta.allure.Link;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.udilov.it.data.data.issueNumber;
-import static com.udilov.it.data.data.repositoryName;
+import static com.udilov.it.data.Data.ISSUE_NUMBER;
+import static com.udilov.it.data.Data.repositoryName;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
@@ -25,7 +25,7 @@ public class AllureReportsWithLambdaTest extends TestBase {
     @Story("Проверка Issue")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "Github", url = "https://github.com")
-    @DisplayName("Проверка названия Issue c номером " + issueNumber)
+    @DisplayName("Проверка названия Issue c номером " + ISSUE_NUMBER)
     public void allureReportsWithLambda() {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -43,8 +43,8 @@ public class AllureReportsWithLambdaTest extends TestBase {
         step("Открываем таб issues", () -> {
             $("#issues-tab").click();
         });
-        step("Проверяем наличие issue с номером " + issueNumber, () -> {
-            $(withText("#" + issueNumber)).should(Condition.exist);
+        step("Проверяем наличие issue с номером " + ISSUE_NUMBER, () -> {
+            $(withText("#" + ISSUE_NUMBER)).should(Condition.exist);
         });
     }
 }
